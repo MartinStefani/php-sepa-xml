@@ -19,7 +19,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Digitick": "sepa/lib/"
+            "Digitick": "lib/"
         }
     },
     "require": {
