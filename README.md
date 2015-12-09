@@ -1,7 +1,7 @@
 php-sepa-xml
 ============
 
-Master: [![Build Status](https://api.travis-ci.org/martinstefani/php-sepa-xml.png?branch=master)](http://travis-ci.org/martinstefani/php-sepa-xml)
+Master: [![Build Status](https://api.travis-ci.org/MartinStefani/php-sepa-xml.png?branch=master)](http://travis-ci.org/MartinStefani/php-sepa-xml)
 
 ##Important notes about this fork
 * This fork adds the possibility to add the creditor's address to the XML. This is optional and the nodes are not
