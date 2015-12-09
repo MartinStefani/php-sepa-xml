@@ -48,4 +48,28 @@ class CustomerCreditTransferInformation extends BaseTransferInformation
     {
         return $this->name;
     }
+
+    /**
+     * @return string
+     */
+    public function getCreditorAddressLine1 ()
+    {
+        return $this->addressLine1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreditorAddressLine2 ()
+    {
+        return $this->addressLine2;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreditorCountryCode ()
+    {
+        return $this->countryCode;
+    }
 }

@@ -162,6 +162,18 @@ class CustomerCreditTransferDomBuilder extends BaseDomBuilder
         // Creditor 2.79
         $creditor = $this->createElement('Cdtr');
         $creditor->appendChild($this->createElement('Nm', $transactionInformation->getCreditorName()));
+
+        // Postal address node with child nodes
+        if ($transactionInformation->getCreditorCountryCode()
+          || $transactionInformation->getCreditorAddressLine1()
+          || $transactionInformation->getCreditorAddressLine2()) {
+            $creditorPostalAddress = $this->createElement('PstlAdr');
+            $creditorPostalAddress->appendChild($this->createElement('Ctry', $transactionInformation->getCreditorCountryCode()));
+            $creditorPostalAddress->appendChild($this->createElement('AdrLine', $transactionInformation->getCreditorAddressLine1()));
+            $creditorPostalAddress->appendChild($this->createElement('AdrLine', $transactionInformation->getCreditorAddressLine2()));
+            $creditor->appendChild($creditorPostalAddress);
+        }
+
         $CdtTrfTxInf->appendChild($creditor);
 
         // CreditorAccount 2.80

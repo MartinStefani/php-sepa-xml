@@ -30,8 +30,8 @@ class StringHelper
      */
     public static function sanitizeString($inputString)
     {
-        $searches = array('Ä', 'Ö', 'Ü', 'ä', 'ö', 'ü', 'ß');
-        $replacements = array('Ae', 'Oe', 'Ue', 'ae', 'oe', 'ue', 'ss');
+        $searches = array('Ä', 'Ö', 'Ü', 'ä', 'ö', 'ü', 'ß', 'Č', 'č', 'Š', 'š', 'Ž', 'ž');
+        $replacements = array('Ae', 'Oe', 'Ue', 'ae', 'oe', 'ue', 'ss', 'C', 'c', 'S', 's', 'Z', 'z');
 
         return str_replace($searches, $replacements, $inputString);
     }

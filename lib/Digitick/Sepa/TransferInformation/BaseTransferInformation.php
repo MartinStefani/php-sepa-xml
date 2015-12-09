@@ -57,6 +57,20 @@ class BaseTransferInformation implements TransferInformationInterface
     /**
      * @var string
      */
+    protected $addressLine1;
+
+    /**
+     * @var string
+     */
+    protected $addressLine2;
+    /**
+     * @var string
+     */
+    protected $countryCode;
+
+    /**
+     * @var string
+     */
     protected $instructionId;
 
     /**
@@ -211,4 +225,16 @@ class BaseTransferInformation implements TransferInformationInterface
         return $this->remittanceInformation;
     }
 
+    /**
+     * @param string $street
+     * @param string $postCode
+     * @param string $city
+     * @param string $countryCode
+     */
+    public function setAddress ($street, $postCode, $city, $countryCode)
+    {
+        $this->addressLine1 = StringHelper::sanitizeString($street);
+        $this->addressLine2 = StringHelper::sanitizeString($postCode . ' ' . $city);
+        $this->countryCode = $countryCode;
+    }
 }
