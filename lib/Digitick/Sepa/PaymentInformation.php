@@ -153,7 +153,7 @@ class PaymentInformation
         $this->originAccountIBAN = $originAccountIBAN;
         $this->originAgentBIC = $originAgentBIC;
         $this->originName = StringHelper::sanitizeString($originName);
-        $this->originAccountCurrency = $originAccountCurrency;
+        $this->originAccountCurrency = strtoupper($originAccountCurrency);
         $this->dueDate = new \DateTime();
     }
 
@@ -329,7 +329,7 @@ class PaymentInformation
      */
     public function setOriginAccountCurrency($originAccountCurrency)
     {
-        $this->originAccountCurrency = $originAccountCurrency;
+        $this->originAccountCurrency = strtoupper($originAccountCurrency);
     }
 
     /**

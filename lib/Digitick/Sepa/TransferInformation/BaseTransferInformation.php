@@ -119,7 +119,7 @@ class BaseTransferInformation implements TransferInformationInterface
      */
     public function setCurrency($currency)
     {
-        $this->currency = $currency;
+        $this->currency = strtoupper($currency);
     }
 
     /**
