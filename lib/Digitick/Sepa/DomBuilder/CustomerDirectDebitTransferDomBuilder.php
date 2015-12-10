@@ -170,7 +170,7 @@ class CustomerDirectDebitTransferDomBuilder extends BaseDomBuilder
         $directDebitTransactionInformation->appendChild($debtorAccount);
 
         $directDebitTransactionInformation->appendChild(
-            $this->getRemittenceElement($transactionInformation->getRemittanceInformation())
+            $this->getRemittanceElement($transactionInformation->getRemittanceInformation())
         );
 
         if ($transactionInformation->hasAmendments()) {

@@ -166,14 +166,33 @@ abstract class BaseDomBuilder implements DomBuilderInterface
     }
 
     /**
-     * @param string $remittenceInformation
+     * @param string $remittanceInformation
+     * @param null $creditorReference
      * @return \DOMElement
      */
-    public function getRemittenceElement($remittenceInformation)
+    public function getRemittanceElement($remittanceInformation, $creditorReference = null)
     {
-        $remittanceInformation = $this->createElement('RmtInf');
-        $remittanceInformation->appendChild($this->createElement('Ustrd', $remittenceInformation));
+        $remittanceInformationDomElement = $this->createElement('RmtInf');
 
-        return $remittanceInformation;
+        if ($creditorReference) {
+            // create structured
+            $structured = $this->createElement('Strd');
+            $creditorReferenceInformation = $this->createElement('CdtrRefInf');
+            $type = $this->createElement('Tp');
+            $codeOrProprietary = $this->createElement('CdOrPrtry');
+            $codeOrProprietary->appendChild($this->createElement('Cd', 'SCOR')); // only 'SCOR' value allowed for 'Cd'
+            $type->appendChild($codeOrProprietary);
+            $creditorReferenceInformation->appendChild($type);
+            $creditorReferenceInformation->appendChild($this->createElement('Ref', $creditorReference));
+            $structured->appendChild($creditorReferenceInformation);
+
+            $structured->appendChild($this->createElement('AddtlRmtInf', $remittanceInformation));
+            $remittanceInformationDomElement->appendChild($structured);
+        } else {
+            // create unstructured
+            $remittanceInformationDomElement->appendChild($this->createElement('Ustrd', $remittanceInformation));
+        }
+
+        return $remittanceInformationDomElement;
     }
 }

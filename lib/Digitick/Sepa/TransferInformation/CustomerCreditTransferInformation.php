@@ -22,8 +22,30 @@
 
 namespace Digitick\Sepa\TransferInformation;
 
+use Digitick\Sepa\Util\StringHelper;
+
 class CustomerCreditTransferInformation extends BaseTransferInformation
 {
+    /**
+     * @var string
+     */
+    protected $addressLine1;
+
+    /**
+     * @var string
+     */
+    protected $addressLine2;
+
+    /**
+     * @var string
+     */
+    protected $countryCode;
+
+    /**
+     * @var string
+     */
+    protected $creditorReference;
+
     /**
      * @param string $amount
      * @param string $iban
@@ -39,6 +61,19 @@ class CustomerCreditTransferInformation extends BaseTransferInformation
         }
 
         $this->setEndToEndIdentification($identification);
+    }
+
+    /**
+     * @param string $street
+     * @param string $postCode
+     * @param string $city
+     * @param string $countryCode
+     */
+    public function setAddress ($street, $postCode, $city, $countryCode)
+    {
+        $this->addressLine1 = StringHelper::sanitizeString($street);
+        $this->addressLine2 = StringHelper::sanitizeString($postCode . ' ' . $city);
+        $this->countryCode = $countryCode;
     }
 
     /**
@@ -71,5 +106,21 @@ class CustomerCreditTransferInformation extends BaseTransferInformation
     public function getCreditorCountryCode ()
     {
         return $this->countryCode;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCreditorReference ()
+    {
+        return $this->creditorReference;
+    }
+
+    /**
+     * @param string $creditorReference
+     */
+    public function setCreditorReference ($creditorReference)
+    {
+        $this->creditorReference = $creditorReference;
     }
 }
