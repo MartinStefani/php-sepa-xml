@@ -4,8 +4,10 @@ php-sepa-xml
 Master: [![Build Status](https://api.travis-ci.org/MartinStefani/php-sepa-xml.png?branch=master)](http://travis-ci.org/MartinStefani/php-sepa-xml)
 
 ##Important notes about this fork
-* This fork adds the possibility to add the creditor's address to the XML. This is optional and the nodes are not
+* Upgrade: This fork adds the possibility to add the creditor's address to the XML. This is optional and the nodes are not
 generated if the addresses are not given.
+* Upgrade: Added the possibility to add the creditor's reference code instead of just a description.
+* Fix: using word "remittence" instead of "remittance" in a function name and parameter
 * This is used on a production environment using pain.001.001.03 with the Slovenian bank NKBM.
 * Be aware, the ISO standard requires only ASCII characters and the StringHelper class takes care only of a bunch of characters.
 I have added slovenian characters, but polish, hungarian etc. characters are missing.
